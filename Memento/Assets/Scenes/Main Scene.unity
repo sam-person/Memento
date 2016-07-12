@@ -579,7 +579,8 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: e6baa6a489a4b45138494bcc9bbdd02e, type: 3}
   openHand: {fileID: 21300000, guid: de7aa80c3b56342ba9c680eb627b6c3c, type: 3}
   closeHand: {fileID: 21300000, guid: 434ccb2f8ec4c4814bb88482ba033765, type: 3}
-  distance: 1.5
+  distanceFromCam: 1.8
+  pickUpRange: 6
   smooth: 8
 --- !u!1 &1319420602
 GameObject:

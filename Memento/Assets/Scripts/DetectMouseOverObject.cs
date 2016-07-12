@@ -9,7 +9,8 @@ public class DetectMouseOverObject : MonoBehaviour {
 	public Sprite openHand;
 	public Sprite closeHand;
 
-	public float distance;
+	public float distanceFromCam;
+	public float pickUpRange;
 	public float smooth;
 
 	private bool isCarrying;
@@ -43,18 +44,20 @@ public class DetectMouseOverObject : MonoBehaviour {
 		ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
 		if(Physics.Raycast(ray, out hit)) {
-			if (hit.collider.CompareTag ("KeyObject")) { // Check object's tag
-				if (Input.GetButtonDown ("Fire1")) { // Check if player is clicking
-					hud.sprite = closeHand;
-					Rigidbody rbCarriedObject = hit.collider.GetComponent<Rigidbody> ();
+			if (hit.distance <= pickUpRange) {
+				if (hit.collider.CompareTag ("KeyObject")) { // Check object's tag
+					if (Input.GetButtonDown ("Fire1")) { // Check if player is clicking
+						hud.sprite = closeHand;
+						Rigidbody rbCarriedObject = hit.collider.GetComponent<Rigidbody> ();
 
-					if (rbCarriedObject != null) {
-						isCarrying = true;
-						carriedObject = rbCarriedObject.gameObject;
-						rbCarriedObject.useGravity = false;
+						if (rbCarriedObject != null) {
+							isCarrying = true;
+							carriedObject = rbCarriedObject.gameObject;
+							rbCarriedObject.useGravity = false;
+						}
+					} else { // Player is JUST looking at object
+						hud.sprite = openHand;
 					}
-				} else { // Player is JUST looking at object
-					hud.sprite = openHand;
 				}
 			} else { // Show cross hair instead
 				hud.sprite = normal;
@@ -62,6 +65,8 @@ public class DetectMouseOverObject : MonoBehaviour {
 		}
 
 	}
+
+	
 
 	/// <summary>
 	/// Carry the specified heldObject.
@@ -71,7 +76,7 @@ public class DetectMouseOverObject : MonoBehaviour {
 		// Move object to middle of screen
 		heldObject.transform.position = 
 			Vector3.Lerp(heldObject.transform.position, 
-				mainCamera.transform.position + mainCamera.transform.forward * distance,
+				mainCamera.transform.position + mainCamera.transform.forward * distanceFromCam,
 				Time.deltaTime * smooth);
 
 		// prevent rotation
