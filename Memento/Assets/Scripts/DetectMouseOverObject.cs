@@ -58,9 +58,14 @@ public class DetectMouseOverObject : MonoBehaviour {
 					} else { // Player is JUST looking at object
 						hud.sprite = openHand;
 					}
+				} else {
+					if (carriedObject != null) {
+						DropObject ();
+					}
 				}
 			} else { // Show cross hair instead
 				hud.sprite = normal;
+
 			}
 		}
 
@@ -86,17 +91,27 @@ public class DetectMouseOverObject : MonoBehaviour {
 	// Check if player wants to drop object by clicking while holding an object
 	void CheckDropObject() {
 		if (Input.GetButtonUp ("Fire1")) { // Check if player is clicking
-			isCarrying = false; // turn off carrying
-
-			// Turn Gravity on
-			Rigidbody rbCarriedObject = carriedObject.GetComponent<Rigidbody> ();
-			if (rbCarriedObject != null) { 
-				rbCarriedObject.useGravity = true;
-			}
-
-			rbCarriedObject.velocity = Vector3.zero; // reset velocity
-
-			carriedObject = null; // reset object
+			DropObject();
 		}
+	}
+
+	void DropObject() {
+		isCarrying = false; // turn off carrying
+		
+		// Turn Gravity on
+		Rigidbody rbCarriedObject = carriedObject.GetComponent<Rigidbody> ();
+		if (rbCarriedObject != null) { 
+			rbCarriedObject.useGravity = true;
+		}
+
+		rbCarriedObject.velocity = Vector3.zero; // reset velocity
+
+		carriedObject = null; // reset object
+	}
+
+	// Check if player is holding an object
+	public bool isPlayerHoldingObject {
+		
+		get { return isCarrying; }
 	}
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - KeyObject
+  - InputBox
   layers:
   - Default
   - TransparentFX
