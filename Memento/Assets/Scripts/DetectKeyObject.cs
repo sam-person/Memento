@@ -11,6 +11,8 @@ public class DetectKeyObject : MonoBehaviour {
 	GameObject playerCam;
 	GameObject containedObject;
 
+	Vector3 initVel;
+
 	bool containsObject;
 	bool acceptedObject;
 
@@ -51,19 +53,26 @@ public class DetectKeyObject : MonoBehaviour {
 	}
 
 	IEnumerator CheckObject() {
-		yield return new WaitForSeconds (2.0f);
+		yield return new WaitForSeconds (waitTime);
 
 		if (containsObject && !PlayerHoldingObject()) {
+			Rigidbody rb = containedObject.GetComponent<Rigidbody> ();
+
+			if (!acceptedObject) {
+				rb.velocity += new Vector3 (0.0f, -0.5f, 0.0f);
+			}
 			
 			eBlue key = containedObject.GetComponent<eBlue> ();
 			if (key != null) {
 				myLid.SetActive (true);
 				acceptedObject = true;
+				myBase.enabled = true;
 
 			} else {
 				myBase.enabled = false;
-				yield return new WaitForSeconds (1.0f);
-				myBase.enabled = true;
+				if (!containsObject) {
+					myBase.enabled = true;
+				}
 
 			}
 		}
