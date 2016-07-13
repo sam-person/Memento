@@ -43,7 +43,7 @@ public class DetectMouseOverObject : MonoBehaviour {
 	void PickUp() {
 		ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-		if (Physics.Raycast (ray, out hit)) {
+		if(Physics.Raycast(ray, out hit)) {
 			if (hit.distance <= pickUpRange) {
 				if (hit.collider.CompareTag ("KeyObject")) { // Check object's tag
 					if (Input.GetButtonDown ("Fire1")) { // Check if player is clicking
@@ -53,7 +53,7 @@ public class DetectMouseOverObject : MonoBehaviour {
 						if (rbCarriedObject != null) {
 							isCarrying = true;
 							carriedObject = rbCarriedObject.gameObject;
-//							rbCarriedObject.useGravity = false;
+							rbCarriedObject.useGravity = false;
 						}
 					} else { // Player is JUST looking at object
 						hud.sprite = openHand;
@@ -63,9 +63,10 @@ public class DetectMouseOverObject : MonoBehaviour {
 						DropObject ();
 					}
 				}
-			} 
-		} else { // Default to normal cross hair
-			hud.sprite = normal;
+			} else { // Show cross hair instead
+				hud.sprite = normal;
+
+			}
 		}
 
 	}
@@ -99,10 +100,11 @@ public class DetectMouseOverObject : MonoBehaviour {
 		
 		// Turn Gravity on
 		Rigidbody rbCarriedObject = carriedObject.GetComponent<Rigidbody> ();
+		if (rbCarriedObject != null) { 
+			rbCarriedObject.useGravity = true;
+		}
 
 		rbCarriedObject.velocity = Vector3.zero; // reset velocity
-		rbCarriedObject.velocity = new Vector3(0.0f, -0.5f, 0.0f);
-		Debug.Log (rbCarriedObject.velocity);
 
 		carriedObject = null; // reset object
 	}
