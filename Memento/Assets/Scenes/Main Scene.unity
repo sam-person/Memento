@@ -1257,6 +1257,14 @@ MonoBehaviour:
   distanceFromCam: 1.8
   pickUpRange: 3
   smooth: 8
+--- !u!45 &1227191057
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1227191050}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 7c2705c70e89b4055a3969495af0ffbb, type: 2}
 --- !u!1 &1236900368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3194,26 @@ Prefab:
     - target: {fileID: 11400006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
       propertyPath: motionBob.HorizontalBobRange
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
+      propertyPath: m_BackGroundColor.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
