@@ -7,6 +7,8 @@ public class Floating2 : MonoBehaviour {
 	public float capVel = 2.0f;
 	public float capAngVel = 2.0f;
 	public float maxHeight = 5.0f;
+	public float minHeight = 0.05f;
+	public float bounceForce;
 
 	Rigidbody rb;
 
@@ -27,6 +29,16 @@ public class Floating2 : MonoBehaviour {
 
 		if (rb.transform.position.y > maxHeight) {
 			rb.velocity = new Vector3 (rb.velocity.x, -1.0f, rb.velocity.z);
+		} else if (rb.transform.position.y < minHeight) {
+			rb.velocity = new Vector3 (rb.velocity.x, 0.1f, rb.velocity.z);
+		}
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		if (collision.collider.CompareTag("Wall")) {
+			Vector3 toMiddle = -transform.position;
+
+			rb.AddForce(toMiddle * bounceForce);
 		}
 	}
 }

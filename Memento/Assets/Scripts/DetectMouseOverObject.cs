@@ -71,9 +71,7 @@ public class DetectMouseOverObject : MonoBehaviour {
 		}
 
 	}
-
-	
-
+		
 	/// <summary>
 	/// Carry the specified heldObject.
 	/// </summary>
@@ -104,7 +102,6 @@ public class DetectMouseOverObject : MonoBehaviour {
 
 		rbCarriedObject.velocity = Vector3.zero; // reset velocity
 		rbCarriedObject.velocity = new Vector3(0.0f, -0.5f, 0.0f);
-		Debug.Log (rbCarriedObject.velocity);
 
 		carriedObject = null; // reset object
 	}

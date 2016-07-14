@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11424148}
   - 54: {fileID: 5437882}
   - 114: {fileID: 11434636}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FillerCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4266882, y: 0.5276146, z: -1.75403}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -119,7 +119,9 @@ MonoBehaviour:
   tumble: 0.15
   capVel: 2
   capAngVel: 2
-  maxHeight: 5
+  maxHeight: 10
+  minHeight: 0.5
+  bounceForce: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

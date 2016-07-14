@@ -109,6 +109,8 @@ MonoBehaviour:
   capVel: 2
   capAngVel: 2
   maxHeight: 5
+  minHeight: 0.5
+  bounceForce: 3
 --- !u!114 &11493350
 MonoBehaviour:
   m_ObjectHideFlags: 1

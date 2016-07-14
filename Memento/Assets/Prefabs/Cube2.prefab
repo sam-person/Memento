@@ -120,6 +120,8 @@ MonoBehaviour:
   capVel: 2
   capAngVel: 2
   maxHeight: 5
+  minHeight: 0.5
+  bounceForce: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

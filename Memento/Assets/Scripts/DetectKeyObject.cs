@@ -10,7 +10,7 @@ public class DetectKeyObject : MonoBehaviour {
 
 	GameObject playerCam;
 	GameObject containedObject;
-
+	Collider myCollider;
 	Vector3 initVel;
 
 	bool containsObject;
@@ -19,6 +19,7 @@ public class DetectKeyObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerCam = GameObject.FindGameObjectWithTag ("MainCamera");
+		myCollider = GetComponent<Collider> ();
 		containsObject = false;
 		acceptedObject = false;
 	}
@@ -33,9 +34,8 @@ public class DetectKeyObject : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if (other.CompareTag("KeyObject")) {
+		if (other.CompareTag("KeyObject") && !acceptedObject) {
 			containsObject = true;
-			Debug.Log ("Object is in");
 
 			containedObject = other.gameObject;
 		}
@@ -44,7 +44,6 @@ public class DetectKeyObject : MonoBehaviour {
 	void OnTriggerExit(Collider other) {
 		if (other.CompareTag("KeyObject")) {
 			containsObject = false;
-			Debug.Log ("Object is out");
 
 			myLid.SetActive (false);
 			acceptedObject = false;
@@ -73,7 +72,6 @@ public class DetectKeyObject : MonoBehaviour {
 				if (!containsObject) {
 					myBase.enabled = true;
 				}
-
 			}
 		}
 	}
