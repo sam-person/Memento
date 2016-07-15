@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 	public GameObject[] keyObjects;
 	public float amountOfFiller;
 	public bool spawnFiller;
+	public float spawnHeight;
 
 	public Color fogColour; // Fog
 	public float density;
@@ -32,7 +33,7 @@ public class GameController : MonoBehaviour {
 		for (int i = 0; i < amountOfFiller; i++) {
 			GameObject filler = fillerObjects [Random.Range (0, fillerObjects.Length)];
 			Quaternion spawnRotation = Quaternion.identity;
-			Vector3 spawnPos = new Vector3 (0.0f, 3.0f, 0.0f);
+			Vector3 spawnPos = new Vector3 (0.0f, spawnHeight, 0.0f);
 
 			Instantiate (filler, spawnPos, spawnRotation);
 		}
@@ -42,7 +43,7 @@ public class GameController : MonoBehaviour {
 		for (int i = 0; i < keyObjects.Length; i++) {
 			GameObject keyObject = keyObjects [i];
 			Quaternion spawnRotation = Quaternion.identity;
-			Vector3 spawnPos = new Vector3 (0.0f, 3.0f, 0.0f);
+			Vector3 spawnPos = new Vector3 (0.0f, spawnHeight, 0.0f);
 
 			Instantiate (keyObject, spawnPos, spawnRotation);
 		}
