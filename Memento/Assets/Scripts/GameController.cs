@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject[] fillerObjects;
+	public GameObject[] fillerObjects; // Objects
 	public GameObject[] keyObjects;
 	public float amountOfFiller;
 	public bool spawnFiller;
@@ -12,6 +12,8 @@ public class GameController : MonoBehaviour {
 	public Color fogColour; // Fog
 	public float density;
 	public bool fogOn;
+
+	GameObject[] Doors;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,10 @@ public class GameController : MonoBehaviour {
 		RenderSettings.fog = fogOn;
 		RenderSettings.fogColor = fogColour;
 		RenderSettings.fogDensity = density;
+
+
+		Doors = GameObject.FindGameObjectsWithTag ("Door");
+		StartCoroutine (TestLights ());
 	}
 	
 	// Update is called once per frame
@@ -47,5 +53,24 @@ public class GameController : MonoBehaviour {
 
 			Instantiate (keyObject, spawnPos, spawnRotation);
 		}
+	}
+
+
+	IEnumerator TestLights() {
+		for (int j = 0; j < 5; j++) {
+			yield return new WaitForSeconds (1.0f);
+
+			if (Doors.Length > 0) {
+				for (int i = 0; i < Doors.Length; i++) {
+					DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
+
+					if (currentDoor != null) {
+						currentDoor.TurnNextLightGreen ();
+					}
+				}
+			}
+		}
+
+		StopCoroutine (TestLights ());
 	}
 }
