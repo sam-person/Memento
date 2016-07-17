@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 		StartCoroutine (TestLights ());
 
 		for (int i = 0; i < keyObjectsInserted.Length; i++) {
-			keyObjects [i] = false;
+			keyObjectsInserted [i] = false;
 		}
 	}
 	
