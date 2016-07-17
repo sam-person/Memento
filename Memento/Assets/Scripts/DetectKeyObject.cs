@@ -13,11 +13,17 @@ public class DetectKeyObject : MonoBehaviour {
 	Collider myCollider;
 	Vector3 initVel;
 
+	GameObject gameControllerObject;
+	GameController gameControllerScript;
+
 	bool containsObject;
 	bool acceptedObject;
 
 	// Use this for initialization
 	void Start () {
+		gameControllerObject = GameObject.FindGameObjectWithTag ("GameController"); // get GameController Reference
+		gameControllerScript = gameControllerObject.GetComponent<GameController> ();
+
 		playerCam = GameObject.FindGameObjectWithTag ("MainCamera");
 		myCollider = GetComponent<Collider> ();
 		containsObject = false;
@@ -84,4 +90,6 @@ public class DetectKeyObject : MonoBehaviour {
 			return false;
 		}
 	}
+
+
 }

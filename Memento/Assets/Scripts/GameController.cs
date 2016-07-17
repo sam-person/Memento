@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour {
 
 	GameObject[] Doors;
 
+	private bool[] keyObjectsInserted;
+	private int keyObjectsInsertedCount = 0;
+
 	// Use this for initialization
 	void Start () {
 		if (spawnFiller) {
@@ -29,6 +32,10 @@ public class GameController : MonoBehaviour {
 
 		Doors = GameObject.FindGameObjectsWithTag ("Door");
 		StartCoroutine (TestLights ());
+
+		for (int i = 0; i < keyObjectsInserted.Length; i++) {
+			keyObjects [i] = false;
+		}
 	}
 	
 	// Update is called once per frame
@@ -72,5 +79,15 @@ public class GameController : MonoBehaviour {
 		}
 
 		StopCoroutine (TestLights ());
+	}
+
+	public void CorretObjectInserted() {
+		if (keyObjectsInsertedCount < Doors.Length) {
+			DoorLogic currentDoor = Doors [keyObjectsInsertedCount].GetComponent<DoorLogic> ();
+			currentDoor.TurnNextLightGreen ();
+		}
+
+		keyObjectsInsertedCount++;
+
 	}
 }
