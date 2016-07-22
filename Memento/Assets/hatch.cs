@@ -13,8 +13,13 @@ public class hatch : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown ("1")) {
-			Debug.Log ("Closing");
+			Debug.Log ("Closing box");
 			anim.Play ("Gap close");
+		}
+
+		if (Input.GetKeyDown ("2")) {
+			Debug.Log ("Turning valve");
+			anim.Play ("Spin");
 		}
 	}
 }

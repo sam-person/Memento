@@ -20,11 +20,12 @@ public class GameController : MonoBehaviour {
 		if (spawnFiller) {
 			SpawnFillerObjects ();
 		}
-		SpawnKeyObjects();
+//		SpawnKeyObjects();
 
 		RenderSettings.fog = fogOn;
 		RenderSettings.fogColor = fogColour;
 		RenderSettings.fogDensity = density;
+
 
 
 		Doors = GameObject.FindGameObjectsWithTag ("Door");

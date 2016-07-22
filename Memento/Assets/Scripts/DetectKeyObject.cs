@@ -12,7 +12,7 @@ public class DetectKeyObject : MonoBehaviour {
 	GameObject containedObject;
 	Collider myCollider;
 	Vector3 initVel;
-	Animator anim;
+
 
 //	GameObject gameControllerObject;
 //	GameController gameControllerScript;
@@ -27,7 +27,6 @@ public class DetectKeyObject : MonoBehaviour {
 
 		playerCam = GameObject.FindGameObjectWithTag ("MainCamera");
 		myCollider = GetComponent<Collider> ();
-		anim = GetComponent<Animator> ();
 		containsObject = false;
 		acceptedObject = false;
 	}
@@ -42,10 +41,6 @@ public class DetectKeyObject : MonoBehaviour {
 //					myBase.enabled = true;
 				}
 			}
-		}
-
-		if (Input.GetKeyDown ("1")) {
-			anim.Play ("Gap close");
 		}
 	}
 
@@ -82,8 +77,8 @@ public class DetectKeyObject : MonoBehaviour {
 //				myLid.SetActive (true);
 				acceptedObject = true;
 //				myBase.enabled = true;
-//				myCollider.enabled = false;
-//				containedObject.SetActive (false);
+				myCollider.enabled = false;
+				containedObject.SetActive (false);
 
 			} else {
 //				myBase.enabled = false;
