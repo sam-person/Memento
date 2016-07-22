@@ -27,4 +27,12 @@ public class DoorLogic : MonoBehaviour {
 			lightsGreen++;
 		}
 	}
+
+	public void OpenDoor() {
+
+	}
+
+	public void CloseDoor() {
+
+	}
 }

@@ -12,20 +12,22 @@ public class DetectKeyObject : MonoBehaviour {
 	GameObject containedObject;
 	Collider myCollider;
 	Vector3 initVel;
+	Animator anim;
 
-	GameObject gameControllerObject;
-	GameController gameControllerScript;
+//	GameObject gameControllerObject;
+//	GameController gameControllerScript;
 
 	bool containsObject;
 	bool acceptedObject;
 
 	// Use this for initialization
 	void Start () {
-		gameControllerObject = GameObject.FindGameObjectWithTag ("GameController"); // get GameController Reference
-		gameControllerScript = gameControllerObject.GetComponent<GameController> ();
+//		gameControllerObject = GameObject.FindGameObjectWithTag ("GameController"); // get GameController Reference
+//		gameControllerScript = gameControllerObject.GetComponent<GameController> ();
 
 		playerCam = GameObject.FindGameObjectWithTag ("MainCamera");
 		myCollider = GetComponent<Collider> ();
+		anim = GetComponent<Animator> ();
 		containsObject = false;
 		acceptedObject = false;
 	}
@@ -35,7 +37,15 @@ public class DetectKeyObject : MonoBehaviour {
 		if (containsObject && !acceptedObject) {
 			if (!PlayerHoldingObject()) {
 				StartCoroutine (CheckObject ());
+
+				if (!containsObject) {
+//					myBase.enabled = true;
+				}
 			}
+		}
+
+		if (Input.GetKeyDown ("1")) {
+			anim.Play ("Gap close");
 		}
 	}
 
@@ -51,7 +61,7 @@ public class DetectKeyObject : MonoBehaviour {
 		if (other.CompareTag("KeyObject")) {
 			containsObject = false;
 
-			myLid.SetActive (false);
+//			myLid.SetActive (false);
 			acceptedObject = false;
 			containedObject = null;
 		}
@@ -67,28 +77,24 @@ public class DetectKeyObject : MonoBehaviour {
 				rb.velocity += new Vector3 (0.0f, -0.5f, 0.0f);
 			}
 			
-			eBlue key = containedObject.GetComponent<eBlue> ();
+			eBlue key = containedObject.GetComponent<eBlue> (); // KEY
 			if (key != null) {
-				myLid.SetActive (true);
+//				myLid.SetActive (true);
 				acceptedObject = true;
-				myBase.enabled = true;
+//				myBase.enabled = true;
+//				myCollider.enabled = false;
+//				containedObject.SetActive (false);
 
 			} else {
-				myBase.enabled = false;
-				if (!containsObject) {
-					myBase.enabled = true;
-				}
+//				myBase.enabled = false;
+
 			}
 		}
 	}
 
 	bool PlayerHoldingObject() {
 		DetectMouseOverObject playerCamScript = playerCam.GetComponent<DetectMouseOverObject> ();
-		if (playerCamScript.isPlayerHoldingObject) {
-			return true;
-		} else {
-			return false;
-		}
+		return playerCamScript.isPlayerHoldingObject;
 	}
 
 

@@ -30,11 +30,6 @@ public class GameController : MonoBehaviour {
 		Doors = GameObject.FindGameObjectsWithTag ("Door");
 		StartCoroutine (TestLights ());
 
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 
 	void SpawnFillerObjects() {
