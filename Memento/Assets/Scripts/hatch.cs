@@ -14,12 +14,14 @@ public class hatch : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown ("1")) {
 			Debug.Log ("Closing box");
-			anim.Play ("Gap close");
+			anim.Play ("OpenLid");
 		}
 
 		if (Input.GetKeyDown ("2")) {
 			Debug.Log ("Turning valve");
-			anim.Play ("Spin");
+			anim.Play ("CloseLid");
 		}
+
+
 	}
 }
