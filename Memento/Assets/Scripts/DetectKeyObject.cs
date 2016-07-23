@@ -19,6 +19,7 @@ public class DetectKeyObject : MonoBehaviour {
 
 	bool containsObject;
 	bool acceptedObject;
+	bool coroutineActive;
 
 	// Use this for initialization
 	void Start () {
@@ -29,13 +30,18 @@ public class DetectKeyObject : MonoBehaviour {
 		myCollider = GetComponent<Collider> ();
 		containsObject = false;
 		acceptedObject = false;
+		coroutineActive = false;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (containsObject && !acceptedObject) {
 			if (!PlayerHoldingObject()) {
-				StartCoroutine (CheckObject ());
+				if (!coroutineActive) {
+					StartCoroutine (CheckObject ());
+					coroutineActive = true;
+				}
 
 				if (!containsObject) {
 //					myBase.enabled = true;
@@ -69,20 +75,26 @@ public class DetectKeyObject : MonoBehaviour {
 			Rigidbody rb = containedObject.GetComponent<Rigidbody> ();
 
 			if (!acceptedObject) {
-				rb.velocity += new Vector3 (0.0f, -0.5f, 0.0f);
+				rb.velocity += new Vector3 (0.0f, -0.25f, 0.0f);
 			}
 			
 			eBlue key = containedObject.GetComponent<eBlue> (); // KEY
 			if (key != null) {
+				StopCoroutine (CheckObject ());
 //				myLid.SetActive (true);
-				acceptedObject = true;
 //				myBase.enabled = true;
+
+				GameController.current.CorrectObjectInserted ();
+				acceptedObject = true;
+
 				myCollider.enabled = false;
 				containedObject.SetActive (false);
 
+				coroutineActive = false;
 			} else {
 //				myBase.enabled = false;
-
+				StopCoroutine(CheckObject());
+				coroutineActive = false;
 			}
 		}
 	}

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 
+	public static GameController current;
+
 	public GameObject[] fillerObjects; // Objects
 	public GameObject[] keyObjects;
 	public float amountOfFiller;
@@ -14,9 +16,12 @@ public class GameController : MonoBehaviour {
 	public bool fogOn;
 
 	GameObject[] Doors;
+	int insertedKeysCount = 0;
 
 	// Use this for initialization
 	void Start () {
+		current = this;
+
 		if (spawnFiller) {
 			SpawnFillerObjects ();
 		}
@@ -28,12 +33,12 @@ public class GameController : MonoBehaviour {
 
 
 
-		Doors = GameObject.FindGameObjectsWithTag ("Door");
-		StartCoroutine (TestLights ());
+		current.Doors = GameObject.FindGameObjectsWithTag ("Door");
+//		StartCoroutine (current.TestLights ());
 
 	}
 
-	void SpawnFillerObjects() {
+	public void SpawnFillerObjects() {
 		for (int i = 0; i < amountOfFiller; i++) {
 			GameObject filler = fillerObjects [Random.Range (0, fillerObjects.Length)];
 			Quaternion spawnRotation = Quaternion.identity;
@@ -43,7 +48,7 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	void SpawnKeyObjects() {
+	public void SpawnKeyObjects() {
 		for (int i = 0; i < keyObjects.Length; i++) {
 			GameObject keyObject = keyObjects [i];
 			Quaternion spawnRotation = Quaternion.identity;
@@ -54,13 +59,13 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	IEnumerator TestLights() {
+	public IEnumerator TestLights() {
 		for (int j = 0; j < 5; j++) {
 			yield return new WaitForSeconds (1.0f);
 
-			if (Doors.Length > 0) {
-				for (int i = 0; i < Doors.Length; i++) {
-					DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
+			if (current.Doors.Length > 0) {
+				for (int i = 0; i < current.Doors.Length; i++) {
+					DoorLogic currentDoor = current.Doors [i].GetComponent<DoorLogic> ();
 
 					if (currentDoor != null) {
 						currentDoor.TurnNextLightGreen ();
@@ -72,13 +77,16 @@ public class GameController : MonoBehaviour {
 		StopCoroutine (TestLights ());
 	}
 
-	public void CorretObjectInserted() {
-//		if (keyObjectsInsertedCount < Doors.Length) {
-//			DoorLogic currentDoor = Doors [keyObjectsInsertedCount].GetComponent<DoorLogic> ();
-//			currentDoor.TurnNextLightGreen ();
+	public void CorrectObjectInserted() {
+//		Debug.Log ("inserted: " + current.insertedKeysCount + " doors: " + current.Doors.Length);
+//		if (current.insertedKeysCount < current.Doors.Length) {
+//			
+//			current.insertedKeysCount++;
 //		}
-//
-//		keyObjectsInsertedCount++;
+		for (int i = 0; i < current.Doors.Length; i++) {
+			DoorLogic currentDoor = current.Doors [i].GetComponent<DoorLogic> ();
+			currentDoor.TurnNextLightGreen ();
+		}
 
 	}
 }

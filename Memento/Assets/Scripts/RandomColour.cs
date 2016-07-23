@@ -3,12 +3,11 @@ using System.Collections;
 
 public class RandomColour : MonoBehaviour {
 
-	GameObject me;
 	Renderer myRenderer;
 
 	// Use this for initialization
 	void Start () {
-		me = GetComponent<GameObject> ();
+
 		myRenderer = GetComponent<Renderer> ();
 
 		Color randColor = new Color (Random.value, Random.value, Random.value, 1.0f);

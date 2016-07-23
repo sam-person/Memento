@@ -35,4 +35,12 @@ public class DoorLogic : MonoBehaviour {
 	public void CloseDoor() {
 
 	}
+
+	public void CloseBox() {
+
+	}
+
+	public void TurnValve() {
+
+	}
 }
