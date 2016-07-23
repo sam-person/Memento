@@ -8,6 +8,7 @@ TagManager:
   - InputBox
   - Wall
   - Door
+  - DoorBox
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public static GameController current;
+	public bool isPhase2 = false;
 
 	public GameObject[] fillerObjects; // Objects
 	public GameObject[] keyObjects;
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour {
 	public bool fogOn;
 
 	GameObject[] Doors;
+	int numOfKeys;
 	int insertedKeysCount = 0;
 
 	// Use this for initialization
@@ -32,10 +34,18 @@ public class GameController : MonoBehaviour {
 		RenderSettings.fogDensity = density;
 
 
-
-		current.Doors = GameObject.FindGameObjectsWithTag ("Door");
+		Doors = GameObject.FindGameObjectsWithTag ("Door");
+		numOfKeys = Doors.Length;
 //		StartCoroutine (current.TestLights ());
 
+	}
+
+	void Update() {
+		if (!isPhase2) {
+			if (insertedKeysCount >= numOfKeys) {
+				isPhase2 = true;
+			}
+		}
 	}
 
 	public void SpawnFillerObjects() {
@@ -63,9 +73,9 @@ public class GameController : MonoBehaviour {
 		for (int j = 0; j < 5; j++) {
 			yield return new WaitForSeconds (1.0f);
 
-			if (current.Doors.Length > 0) {
-				for (int i = 0; i < current.Doors.Length; i++) {
-					DoorLogic currentDoor = current.Doors [i].GetComponent<DoorLogic> ();
+			if (Doors.Length > 0) {
+				for (int i = 0; i < Doors.Length; i++) {
+					DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
 
 					if (currentDoor != null) {
 						currentDoor.TurnNextLightGreen ();
@@ -83,10 +93,12 @@ public class GameController : MonoBehaviour {
 //			
 //			current.insertedKeysCount++;
 //		}
-		for (int i = 0; i < current.Doors.Length; i++) {
-			DoorLogic currentDoor = current.Doors [i].GetComponent<DoorLogic> ();
+		for (int i = 0; i < Doors.Length; i++) {
+			DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
 			currentDoor.TurnNextLightGreen ();
 		}
+		insertedKeysCount++;
 
 	}
+
 }

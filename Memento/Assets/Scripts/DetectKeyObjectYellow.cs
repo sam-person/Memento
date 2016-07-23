@@ -91,12 +91,15 @@ public class DetectKeyObjectYellow : MonoBehaviour {
 				containedObject.SetActive (false);
 
 				coroutineActive = false;
+				Debug.Log ("Accepted Object");
 			} else {
 //				myBase.enabled = false;
 				StopCoroutine(CheckObject());
 				coroutineActive = false;
 			}
 		}
+		StopCoroutine(CheckObject());
+		coroutineActive = false;
 	}
 
 	bool PlayerHoldingObject() {

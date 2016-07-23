@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class DetectMouseOverObject : MonoBehaviour {
 
+	public static DetectMouseOverObject current;
+
 	public Image hud;
 	public Sprite normal;
 	public Sprite openHand;
@@ -18,23 +20,28 @@ public class DetectMouseOverObject : MonoBehaviour {
 	GameObject carriedObject;
 	Camera mainCamera;
 
+	Ray ray;
+	RaycastHit hit;
+
 	// Use this for initialization
 	void Start () {
+		current = this;
 		isCarrying = false;
 		mainCamera = GetComponent<Camera> ();
 	}
 
-	Ray ray;
-	RaycastHit hit;
-
 	void Update()
 	{
-		// Check if player is carrying an object
-		if (isCarrying) {
-			Carry (carriedObject);
-			CheckDropObject (); // check if player wants to drop object
+		if (!GameController.current.isPhase2) {
+			// Check if player is carrying an object
+			if (isCarrying) {
+				Carry (carriedObject);
+				CheckDropObject (); // check if player wants to drop object
+			} else {
+				PickUp ();
+			}
 		} else {
-			PickUp ();
+			LookAt ();
 		}
 
 	}
@@ -62,6 +69,7 @@ public class DetectMouseOverObject : MonoBehaviour {
 					if (carriedObject != null) {
 						DropObject ();
 					}
+					hud.sprite = normal;
 				}
 			} else {
 				hud.sprite = normal;
@@ -111,4 +119,29 @@ public class DetectMouseOverObject : MonoBehaviour {
 		
 		get { return isCarrying; }
 	}
+
+	void LookAt() {
+		ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+		if (Physics.Raycast (ray, out hit)) {
+			if (hit.distance <= pickUpRange) {
+				if (hit.collider.CompareTag ("DoorBox")) { // Check object's tag
+					if (Input.GetButton ("Fire1")) { // Check if player is clicking
+						hud.sprite = closeHand;
+						Rigidbody rbCarriedObject = hit.collider.GetComponent<Rigidbody> ();
+
+					} else { // Player is JUST looking at object
+						hud.sprite = openHand;
+					}
+				} else {
+					hud.sprite = normal;
+				}
+			} else {
+				hud.sprite = normal;
+			}
+		} else { // Default to normal cross hair
+			hud.sprite = normal;
+		}
+	}
+
 }

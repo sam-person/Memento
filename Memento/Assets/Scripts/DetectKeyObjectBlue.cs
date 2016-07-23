@@ -97,6 +97,9 @@ public class DetectKeyObjectBlue : MonoBehaviour {
 				coroutineActive = false;
 			}
 		}
+
+		StopCoroutine(CheckObject());
+		coroutineActive = false;
 	}
 
 	bool PlayerHoldingObject() {
