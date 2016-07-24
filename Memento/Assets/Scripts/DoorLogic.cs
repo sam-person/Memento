@@ -6,8 +6,11 @@ public class DoorLogic : MonoBehaviour {
 	public Light[] myLights;
 	public Color acceptColour;
 	public Color offColour;
+	public Animator animDoor;
+	public Animator animValve;
 
 	private int lightsGreen;
+	Animation anim;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +21,9 @@ public class DoorLogic : MonoBehaviour {
 				light.color = offColour;
 			}
 		}
+
+		TurnValve ();
+//		StartCoroutine (OpenSelectedDoor());
 	}
 
 	public void TurnNextLightGreen() {
@@ -29,18 +35,20 @@ public class DoorLogic : MonoBehaviour {
 	}
 
 	public void OpenDoor() {
-
+		animDoor.Play ("DoorOpen");
 	}
 
 	public void CloseDoor() {
 
 	}
 
-	public void CloseBox() {
-
+	public void TurnValve() {
+		animValve.Play ("WheelRotate");
 	}
 
-	public void TurnValve() {
-
+	IEnumerator OpenSelectedDoor() {
+		TurnValve ();
+		yield return new WaitForSeconds (5.0f);
+		OpenDoor ();
 	}
 }

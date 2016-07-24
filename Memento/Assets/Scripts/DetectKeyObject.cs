@@ -5,6 +5,8 @@ public class DetectKeyObject : MonoBehaviour {
 
 	public GameObject myLid;
 	public Collider myBase;
+	public Animator animBottom;
+	public Animator animTop;
 
 	public float waitTime;
 
@@ -36,8 +38,8 @@ public class DetectKeyObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (containsObject && !acceptedObject) {
-			if (!PlayerHoldingObject()) {
+		if (containsObject && !acceptedObject) { 
+			if (!PlayerHoldingObject()) { // Check if player is still holding object
 				if (!coroutineActive) {
 					StartCoroutine (CheckObject ());
 					coroutineActive = true;
@@ -87,10 +89,12 @@ public class DetectKeyObject : MonoBehaviour {
 				GameController.current.CorrectObjectInserted ();
 				acceptedObject = true;
 
-				myCollider.enabled = false;
+				myCollider.enabled = false; // Turn object and collider off
 				containedObject.SetActive (false);
 
 				coroutineActive = false;
+				animTop.Play ("hatchClose2"); // Close the hatch
+				animBottom.Play ("hatchClose1");
 			} else {
 //				myBase.enabled = false;
 				StopCoroutine(CheckObject());
