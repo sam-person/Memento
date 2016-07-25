@@ -10,7 +10,7 @@ public class DoorLogic : MonoBehaviour {
 	public Animator animValve;
 
 	private int lightsGreen;
-	Animation anim;
+	private bool isOpen = false;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,7 @@ public class DoorLogic : MonoBehaviour {
 			}
 		}
 
-		TurnValve ();
+//		TurnValve ();
 //		StartCoroutine (OpenSelectedDoor());
 	}
 
@@ -36,19 +36,33 @@ public class DoorLogic : MonoBehaviour {
 
 	public void OpenDoor() {
 		animDoor.Play ("DoorOpen");
+		isOpen = true;
 	}
 
 	public void CloseDoor() {
-
+		animDoor.Play ("DoorClose");
+		isOpen = false;
 	}
 
 	public void TurnValve() {
 		animValve.Play ("WheelRotate");
 	}
 
-	IEnumerator OpenSelectedDoor() {
+	IEnumerator OpenDoorRoutine() {
 		TurnValve ();
-		yield return new WaitForSeconds (5.0f);
+		yield return new WaitForSeconds (1.0f);
 		OpenDoor ();
+
+		yield return new WaitForSeconds (5.0f);
+		CloseDoor ();
+		StopCoroutine (OpenDoorRoutine ());
+	}
+
+	public void OpenSelectedDoor() {
+		StartCoroutine (OpenDoorRoutine ());
+	}
+
+	public bool IsOpen {
+		get { return isOpen; }
 	}
 }

@@ -82,6 +82,7 @@ GameObject:
   - 33: {fileID: 3358238}
   - 23: {fileID: 2373766}
   - 64: {fileID: 6456114}
+  - 114: {fileID: 11415106}
   m_Layer: 0
   m_Name: Door
   m_TagString: DoorBox
@@ -1011,26 +1012,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aaa9eb193900442995b0d4f66292772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11418138
+--- !u!114 &11415106
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 219bb5f721efb4513a48cba04f30681f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myLid: {fileID: 0}
-  myBase: {fileID: 0}
-  waitTime: 1
---- !u!114 &11472464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130846}
+  m_GameObject: {fileID: 122198}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5881338afdd00404cbb736014df73dde, type: 3}
@@ -1044,6 +1031,45 @@ MonoBehaviour:
   - {fileID: 10832200}
   acceptColour: {r: 0, g: 1, b: 0, a: 0}
   offColour: {r: 1, g: 0, b: 0, a: 0}
+  animDoor: {fileID: 9536064}
+  animValve: {fileID: 9566946}
+--- !u!114 &11418138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219bb5f721efb4513a48cba04f30681f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLid: {fileID: 0}
+  myBase: {fileID: 0}
+  animBottom: {fileID: 9539064}
+  animTop: {fileID: 9557534}
+  waitTime: 1
+--- !u!114 &11472464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130846}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5881338afdd00404cbb736014df73dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myLights:
+  - {fileID: 10860238}
+  - {fileID: 10836572}
+  - {fileID: 10804934}
+  - {fileID: 10867772}
+  - {fileID: 10832200}
+  acceptColour: {r: 0, g: 1, b: 0, a: 0}
+  offColour: {r: 1, g: 0, b: 0, a: 0}
+  animDoor: {fileID: 0}
+  animValve: {fileID: 0}
 --- !u!114 &11491844
 MonoBehaviour:
   m_ObjectHideFlags: 1

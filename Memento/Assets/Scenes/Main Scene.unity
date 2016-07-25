@@ -586,11 +586,6 @@ Transform:
   - {fileID: 758057709}
   m_Father: {fileID: 0}
   m_RootOrder: 14
---- !u!95 &172464378 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9536064, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!1001 &184658108
 Prefab:
   m_ObjectHideFlags: 0
@@ -902,11 +897,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 266552473}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &283142751 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9539064, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!1001 &296328516
 Prefab:
   m_ObjectHideFlags: 0
@@ -1045,11 +1035,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 332634096}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &356542794 stripped
-Light:
-  m_PrefabParentObject: {fileID: 10860238, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!1 &426307573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,31 +1385,6 @@ Transform:
   - {fileID: 934827988}
   m_Father: {fileID: 0}
   m_RootOrder: 16
---- !u!1 &530038859 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 122198, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
---- !u!114 &530038864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 530038859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5881338afdd00404cbb736014df73dde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myLights:
-  - {fileID: 356542794}
-  - {fileID: 1197633973}
-  - {fileID: 762314055}
-  - {fileID: 1366911128}
-  - {fileID: 1236498530}
-  acceptColour: {r: 0, g: 1, b: 0, a: 0}
-  offColour: {r: 1, g: 0, b: 0, a: 0}
-  animDoor: {fileID: 172464378}
-  animValve: {fileID: 1501984557}
 --- !u!1 &583351277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,11 +1840,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 758057708}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &762314055 stripped
-Light:
-  m_PrefabParentObject: {fileID: 10804934, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!1001 &793141563
 Prefab:
   m_ObjectHideFlags: 0
@@ -2354,11 +2309,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 263482776}
   m_RootOrder: 5
---- !u!95 &874000720 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9557534, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!4 &888955377 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400006, guid: 0a66a3a9da2c3954a9ba368877a94845, type: 3}
@@ -2980,19 +2930,32 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.26685178
       objectReference: {fileID: 0}
-    - target: {fileID: 11418138, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
-      propertyPath: animTop
-      value: 
-      objectReference: {fileID: 874000720}
-    - target: {fileID: 11418138, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
-      propertyPath: animBottom
-      value: 
-      objectReference: {fileID: 283142751}
-    - target: {fileID: 11472464, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
-      propertyPath: m_Enabled
+    - target: {fileID: 476924, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 122198, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 130846, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 401198, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.198015
+      objectReference: {fileID: 0}
+    - target: {fileID: 401198, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: 401198, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 144.92859
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11472464, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 40b6032594c2e44b38981657110d03bb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1142279812
@@ -3145,11 +3108,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1191331546}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!108 &1197633973 stripped
-Light:
-  m_PrefabParentObject: {fileID: 10836572, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!1 &1222603188
 GameObject:
   m_ObjectHideFlags: 0
@@ -3318,11 +3276,6 @@ Skybox:
 Transform:
   m_PrefabParentObject: {fileID: 438474, guid: dcffaa2daa2694f5cbbeab0f57fbabe1, type: 2}
   m_PrefabInternal: {fileID: 793141563}
---- !u!108 &1236498530 stripped
-Light:
-  m_PrefabParentObject: {fileID: 10832200, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!1 &1268602618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,11 +3420,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1319420602}
---- !u!108 &1366911128 stripped
-Light:
-  m_PrefabParentObject: {fileID: 10867772, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!1 &1370448825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,11 +5142,6 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!95 &1501984557 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9566946, guid: 40b6032594c2e44b38981657110d03bb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1082769680}
 --- !u!1001 &1561018863
 Prefab:
   m_ObjectHideFlags: 0
@@ -5304,7 +5247,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
       propertyPath: motionBob.HorizontalBobRange
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
       propertyPath: m_ClearFlags

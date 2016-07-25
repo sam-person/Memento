@@ -125,13 +125,14 @@ public class DetectMouseOverObject : MonoBehaviour {
 
 		if (Physics.Raycast (ray, out hit)) {
 			if (hit.distance <= pickUpRange) {
-				if (hit.collider.CompareTag ("DoorBox")) { // Check object's tag
+				if (hit.collider.CompareTag ("Door")) { // Check object's tag
 					if (Input.GetButton ("Fire1")) { // Check if player is clicking
 						hud.sprite = closeHand;
 //						Rigidbody rbCarriedObject = hit.collider.GetComponent<Rigidbody> ();
 						DoorLogic door = hit.collider.GetComponent<DoorLogic> ();
 						Debug.Log (door);
 //						GameObject doorParent = door.transform.parent.gameObject;
+						door.OpenSelectedDoor();
 
 					} else { // Player is JUST looking at object
 						hud.sprite = openHand;
