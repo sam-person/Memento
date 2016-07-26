@@ -4,7 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public static GameController current;
-	public bool isPhase2 = false;
+	public bool isPhase2 = true;
 
 	public GameObject[] fillerObjects; // Objects
 	public GameObject[] keyObjects;
@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 	public bool fogOn;
 
 	GameObject[] Doors;
+	DoorLogic[] doorLogics = new DoorLogic[5];
 	int numOfKeys;
 	int insertedKeysCount = 0;
 
@@ -35,9 +36,12 @@ public class GameController : MonoBehaviour {
 
 
 		Doors = GameObject.FindGameObjectsWithTag ("Door");
+		for (int i = 0; i < Doors.Length; i++) {
+			doorLogics [i] = Doors [i].GetComponent<DoorLogic> ();
+		}
 		numOfKeys = Doors.Length;
-//		StartCoroutine (current.TestLights ());
 
+		insertedKeysCount = numOfKeys;
 	}
 
 	void Update() {
@@ -67,38 +71,49 @@ public class GameController : MonoBehaviour {
 			Instantiate (keyObject, spawnPos, spawnRotation);
 		}
 	}
+		
 
+	public void CorrectObjectInserted() {
+		for (int i = 0; i < Doors.Length; i++) {
+//			DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
+			doorLogics[i].TurnNextLightGreen ();
+		}
+		insertedKeysCount++;
+	}
 
-	public IEnumerator TestLights() {
-		for (int j = 0; j < 5; j++) {
-			yield return new WaitForSeconds (1.0f);
-
-			if (Doors.Length > 0) {
-				for (int i = 0; i < Doors.Length; i++) {
-					DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
-
-					if (currentDoor != null) {
-						currentDoor.TurnNextLightGreen ();
+	public bool CheckDoorOrder(int doorNumber) {
+//		doorNumber--;
+		Debug.Log ("Opening door num: " + doorNumber);
+		bool correctDoorOrdering = true;
+		for (int i = 0; i < doorLogics.Length; i++) {
+			if (doorLogics [i].order < doorNumber) { // Check if current door is before given door
+				Debug.Log("Current Door num: " + i + " Actual door num: " + doorLogics [i].order);
+				if (correctDoorOrdering) { // Check if door order is still correct
+					Debug.Log("Order is still correct");
+					if (doorLogics [i].IsOpen) { // Check if prior door has been opened
+						correctDoorOrdering = true;
+						Debug.Log("Door " + i + " is open " + correctDoorOrdering);
+					// Incorrect Door
+					} else {
+						correctDoorOrdering = false;
+						Debug.Log("Door " + i + " is not open " + correctDoorOrdering);
 					}
 				}
 			}
 		}
 
-		StopCoroutine (TestLights ());
-	}
-
-	public void CorrectObjectInserted() {
-//		Debug.Log ("inserted: " + current.insertedKeysCount + " doors: " + current.Doors.Length);
-//		if (current.insertedKeysCount < current.Doors.Length) {
-//			
-//			current.insertedKeysCount++;
-//		}
-		for (int i = 0; i < Doors.Length; i++) {
-			DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
-			currentDoor.TurnNextLightGreen ();
+		if (!correctDoorOrdering) {
+			CloseAllDoors ();
 		}
-		insertedKeysCount++;
-
+		return correctDoorOrdering;
 	}
 
+	public void CloseAllDoors() {
+		for (int i = 0; i < Doors.Length; i++) {
+//			DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
+			if (doorLogics [i].IsOpen) {
+				doorLogics [i].CloseSelectedDoor ();
+			}
+		}
+	}
 }

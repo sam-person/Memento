@@ -3,8 +3,8 @@ using System.Collections;
 
 public class DetectKeyObject : MonoBehaviour {
 
-	public GameObject myLid;
-	public Collider myBase;
+//	public GameObject myLid;
+//	public Collider myBase;
 	public Animator animBottom;
 	public Animator animTop;
 

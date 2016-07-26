@@ -6,9 +6,9 @@ public class Floating2 : MonoBehaviour {
 	public float tumble = 0.15f;
 	public float capVel = 2.0f;
 	public float capAngVel = 2.0f;
-	public float maxHeight = 5.0f;
+	public float maxHeight = 10.0f;
 	public float minHeight = 0.05f;
-	public float bounceForce;
+	public float bounceForce = 0.5f;
 
 	Rigidbody rb;
 
@@ -18,6 +18,10 @@ public class Floating2 : MonoBehaviour {
 
 		rb.angularVelocity = Random.insideUnitSphere * tumble;
 		rb.maxAngularVelocity = capAngVel;
+
+		if (this.CompareTag ("KeyObject")) {
+			maxHeight = maxHeight / 2.0f;
+		}
 	}
 	
 	// Update is called once per frame

@@ -9,6 +9,8 @@ public class DoorLogic : MonoBehaviour {
 	public Animator animDoor;
 	public Animator animValve;
 
+	public int order;
+
 	private int lightsGreen;
 	private bool isOpen = false;
 
@@ -21,8 +23,7 @@ public class DoorLogic : MonoBehaviour {
 				light.color = offColour;
 			}
 		}
-
-//		TurnValve ();
+			
 //		StartCoroutine (OpenSelectedDoor());
 	}
 
@@ -44,25 +45,40 @@ public class DoorLogic : MonoBehaviour {
 		isOpen = false;
 	}
 
-	public void TurnValve() {
+	public void OpenValve() {
 		animValve.Play ("WheelRotate");
 	}
 
-	IEnumerator OpenDoorRoutine() {
-		TurnValve ();
-		yield return new WaitForSeconds (1.0f);
-		OpenDoor ();
-
-		yield return new WaitForSeconds (5.0f);
-		CloseDoor ();
-		StopCoroutine (OpenDoorRoutine ());
+	public void CloseValve() {
+		animValve.Play ("WheelClose");
 	}
+		
 
 	public void OpenSelectedDoor() {
 		StartCoroutine (OpenDoorRoutine ());
 	}
 
+	public void CloseSelectedDoor() {
+		StartCoroutine (CloseDoorRoutine ());
+	}
+
 	public bool IsOpen {
 		get { return isOpen; }
+	}
+
+	IEnumerator OpenDoorRoutine() {
+		OpenValve ();
+		yield return new WaitForSeconds (1.0f);
+		OpenDoor ();
+
+		StopCoroutine (OpenDoorRoutine ());
+	}
+
+	IEnumerator CloseDoorRoutine() {
+		CloseDoor ();
+		yield return new WaitForSeconds (0.5f);
+		CloseValve ();
+
+		StopCoroutine (CloseDoorRoutine ());
 	}
 }
