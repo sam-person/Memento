@@ -8,7 +8,7 @@ public class Floating2 : MonoBehaviour {
 	public float capAngVel = 2.0f;
 	public float maxHeight = 10.0f;
 	public float minHeight = 0.05f;
-	public float bounceForce = 0.5f;
+	public float bounceForce = 0.05f;
 
 	Rigidbody rb;
 

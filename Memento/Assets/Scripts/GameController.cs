@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour {
 		if (spawnFiller) {
 			SpawnFillerObjects ();
 		}
-//		SpawnKeyObjects();
+		SpawnKeyObjects();
 
 		RenderSettings.fog = fogOn;
 		RenderSettings.fogColor = fogColour;
@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour {
 		}
 		numOfKeys = Doors.Length;
 
-		insertedKeysCount = numOfKeys;
+//		insertedKeysCount = numOfKeys;
 	}
 
 	void Update() {
@@ -83,20 +83,16 @@ public class GameController : MonoBehaviour {
 
 	public bool CheckDoorOrder(int doorNumber) {
 //		doorNumber--;
-		Debug.Log ("Opening door num: " + doorNumber);
 		bool correctDoorOrdering = true;
 		for (int i = 0; i < doorLogics.Length; i++) {
 			if (doorLogics [i].order < doorNumber) { // Check if current door is before given door
-				Debug.Log("Current Door num: " + i + " Actual door num: " + doorLogics [i].order);
 				if (correctDoorOrdering) { // Check if door order is still correct
-					Debug.Log("Order is still correct");
 					if (doorLogics [i].IsOpen) { // Check if prior door has been opened
 						correctDoorOrdering = true;
-						Debug.Log("Door " + i + " is open " + correctDoorOrdering);
+
 					// Incorrect Door
 					} else {
 						correctDoorOrdering = false;
-						Debug.Log("Door " + i + " is not open " + correctDoorOrdering);
 					}
 				}
 			}
