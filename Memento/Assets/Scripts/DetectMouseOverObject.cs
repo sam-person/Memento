@@ -60,7 +60,6 @@ public class DetectMouseOverObject : MonoBehaviour {
 						if (rbCarriedObject != null) {
 							isCarrying = true;
 							carriedObject = rbCarriedObject.gameObject;
-//							rbCarriedObject.useGravity = false;
 						}
 					} else { // Player is JUST looking at object
 						hud.sprite = openHand;

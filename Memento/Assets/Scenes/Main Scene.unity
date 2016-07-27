@@ -192,7 +192,7 @@ Transform:
   - {fileID: 426307574}
   - {fileID: 923719234}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
 --- !u!1 &106002508
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
 --- !u!1 &146139986
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +453,7 @@ Transform:
   - {fileID: 296328517}
   - {fileID: 1882660630}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 21
 --- !u!4 &161271209 stripped
 Transform:
   m_PrefabParentObject: {fileID: 489834, guid: b37c17dea84b746b080df15f9d76402c, type: 2}
@@ -565,7 +565,7 @@ Transform:
   - {fileID: 1567476298}
   - {fileID: 758057709}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
 --- !u!1001 &184658108
 Prefab:
   m_ObjectHideFlags: 0
@@ -941,6 +941,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 9.067247
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1955d74d3ac7ce040876c8fd6fe384e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1955d74d3ac7ce040876c8fd6fe384e1, type: 3}
   m_IsPrefabParent: 0
@@ -1181,7 +1185,7 @@ Transform:
   - {fileID: 1379723929}
   - {fileID: 332634097}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
 --- !u!4 &449962397 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400006, guid: c94e03549e10518439aace562c3a0e8b, type: 3}
@@ -1369,7 +1373,7 @@ Transform:
   - {fileID: 155936175}
   - {fileID: 934827988}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
 --- !u!1 &583351277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,6 +3246,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.14632179
       objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 6460d28a3fd40a24fbbafd89f3fe653b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6460d28a3fd40a24fbbafd89f3fe653b, type: 3}
   m_IsPrefabParent: 0
@@ -3494,7 +3502,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
 --- !u!199 &1401120881
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -5318,7 +5326,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1707140237
 GameObject:
   m_ObjectHideFlags: 0
@@ -5350,7 +5358,7 @@ Transform:
   - {fileID: 266552474}
   - {fileID: 990492808}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
 --- !u!1 &1707743023
 GameObject:
   m_ObjectHideFlags: 0
@@ -5412,7 +5420,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
 --- !u!1 &1732967208
 GameObject:
   m_ObjectHideFlags: 0
@@ -5441,7 +5449,7 @@ Transform:
   m_Children:
   - {fileID: 837765547}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
 --- !u!1 &1778658047
 GameObject:
   m_ObjectHideFlags: 0

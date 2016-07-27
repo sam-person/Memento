@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Keys { Wine_Bottle, Preg_Test, Teddy_Bear, Wilt_Flower, Car_Keys }
+
 public class DetectKeyObject : MonoBehaviour {
 
 //	public GameObject myLid;
@@ -9,6 +11,8 @@ public class DetectKeyObject : MonoBehaviour {
 	public Animator animTop;
 
 	public float waitTime;
+
+	public Keys matchKey;
 
 	GameObject playerCam;
 	GameObject containedObject;
@@ -81,6 +85,8 @@ public class DetectKeyObject : MonoBehaviour {
 			}
 			
 			eBlue key = containedObject.GetComponent<eBlue> (); // KEY
+//			KeyObjectScript keyScript = containedObject.GetComponent<KeyObjectScript>();
+//			if (keyScript.MyKey == matchKey) {
 			if (key != null) {
 				StopCoroutine (CheckObject ());
 //				myLid.SetActive (true);
