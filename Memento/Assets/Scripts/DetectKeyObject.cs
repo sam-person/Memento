@@ -84,10 +84,10 @@ public class DetectKeyObject : MonoBehaviour {
 				rb.velocity += new Vector3 (0.0f, -0.25f, 0.0f);
 			}
 			
-			eBlue key = containedObject.GetComponent<eBlue> (); // KEY
-//			KeyObjectScript keyScript = containedObject.GetComponent<KeyObjectScript>();
-//			if (keyScript.MyKey == matchKey) {
-			if (key != null) {
+//			eBlue key = containedObject.GetComponent<eBlue> (); // KEY
+			KeyObjectScript keyScript = containedObject.GetComponent<KeyObjectScript>();
+			if (keyScript.MyKey == matchKey) {
+//			if (key != null) {
 				StopCoroutine (CheckObject ());
 //				myLid.SetActive (true);
 //				myBase.enabled = true;
