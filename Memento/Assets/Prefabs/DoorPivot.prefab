@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3348100}
   - 23: {fileID: 2398322}
   - 64: {fileID: 6440196}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BottomHatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,7 @@ GameObject:
   - 23: {fileID: 2373766}
   - 64: {fileID: 6456114}
   - 114: {fileID: 11415106}
+  - 82: {fileID: 8215434}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -101,7 +102,7 @@ GameObject:
   - 33: {fileID: 3307766}
   - 23: {fileID: 2347966}
   - 64: {fileID: 6401048}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TopHatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +150,7 @@ GameObject:
   - 4: {fileID: 432918}
   - 95: {fileID: 9539064}
   - 114: {fileID: 11402100}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BottomPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +168,7 @@ GameObject:
   - 33: {fileID: 3368572}
   - 23: {fileID: 2350286}
   - 64: {fileID: 6473792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +265,7 @@ GameObject:
   - 4: {fileID: 415876}
   - 95: {fileID: 9557534}
   - 114: {fileID: 11491844}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TopPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,6 +768,81 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &8215434
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122198}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24332150, guid: 5bc1902a2497848be84c93f253bd9708,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &9536064
 Animator:
   serializedVersion: 3
@@ -1032,7 +1108,11 @@ MonoBehaviour:
   offColour: {r: 1, g: 0, b: 0, a: 0}
   animDoor: {fileID: 9536064}
   animValve: {fileID: 9566946}
-  order: 0
+  doorClose: {fileID: 8300000, guid: 63f0bdaee054bc64c86a9b4ccb47c956, type: 3}
+  doorOpen: {fileID: 8300000, guid: d764f9d04f6db7b4aa8e797aac647f4e, type: 3}
+  turnValve: {fileID: 8300000, guid: abd33226ef615f146947dd21f5dbce2e, type: 3}
+  wrongDoor: {fileID: 8300000, guid: 51405bd6bb3ca7344b00240f06bbfef1, type: 3}
+  order: 5
 --- !u!114 &11418138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1047,6 +1127,7 @@ MonoBehaviour:
   animBottom: {fileID: 9539064}
   animTop: {fileID: 9557534}
   waitTime: 1
+  matchKey: 4
 --- !u!114 &11491844
 MonoBehaviour:
   m_ObjectHideFlags: 1

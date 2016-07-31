@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public bool CheckDoorOrder(int doorNumber) {
-//		doorNumber--;
+		
 		bool correctDoorOrdering = true;
 		for (int i = 0; i < doorLogics.Length; i++) {
 			if (doorLogics [i].order < doorNumber) { // Check if current door is before given door
@@ -94,6 +94,12 @@ public class GameController : MonoBehaviour {
 					} else {
 						correctDoorOrdering = false;
 					}
+				}
+			}
+
+			if (!correctDoorOrdering) {
+				if (doorLogics [i].order == doorNumber) {
+					doorLogics [i].IncorrectDoorSound ();
 				}
 			}
 		}
