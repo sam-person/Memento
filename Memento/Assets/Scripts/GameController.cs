@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public static GameController current;
+	public bool completedGame;
 	public bool isPhase2 = true;
 
 	public GameObject[] fillerObjects; // Objects
@@ -41,7 +42,6 @@ public class GameController : MonoBehaviour {
 		}
 		numOfKeys = Doors.Length;
 
-//		insertedKeysCount = numOfKeys;
 	}
 
 	void Update() {
@@ -50,6 +50,8 @@ public class GameController : MonoBehaviour {
 				isPhase2 = true;
 			}
 		}
+
+
 	}
 
 	public void SpawnFillerObjects() {
@@ -75,7 +77,6 @@ public class GameController : MonoBehaviour {
 
 	public void CorrectObjectInserted() {
 		for (int i = 0; i < Doors.Length; i++) {
-//			DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
 			doorLogics[i].TurnNextLightGreen ();
 		}
 		insertedKeysCount++;
@@ -107,6 +108,9 @@ public class GameController : MonoBehaviour {
 		if (!correctDoorOrdering) {
 			CloseAllDoors ();
 		}
+
+		completedGame = CheckAllDoorsOpen (); // Check if all doors have been opened
+
 		return correctDoorOrdering;
 	}
 
@@ -116,6 +120,21 @@ public class GameController : MonoBehaviour {
 			if (doorLogics [i].IsOpen) {
 				doorLogics [i].CloseSelectedDoor ();
 			}
+		}
+	}
+
+	bool CheckAllDoorsOpen() {
+		int count = 0;
+		foreach(DoorLogic logic in doorLogics) {
+			if(logic.IsOpen) {
+				count++;
+			}
+		}
+
+		if (count >= doorLogics.Length) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }
