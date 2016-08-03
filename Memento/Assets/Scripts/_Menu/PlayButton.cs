@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayButton : MonoBehaviour {
 
 	public void Play() {
-		SceneManager.LoadScene ("Main Scene");
+//		SceneManager.LoadScene ("Main Scene");
+		ScreenFader.current.EndScene();
 	}
 }

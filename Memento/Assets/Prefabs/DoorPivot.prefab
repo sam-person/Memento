@@ -149,7 +149,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 432918}
   - 95: {fileID: 9539064}
-  - 114: {fileID: 11402100}
   m_Layer: 9
   m_Name: BottomPivot
   m_TagString: Untagged
@@ -264,7 +263,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 415876}
   - 95: {fileID: 9557534}
-  - 114: {fileID: 11491844}
   m_Layer: 9
   m_Name: TopPivot
   m_TagString: Untagged
@@ -369,7 +367,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102152}
-  m_LocalRotation: {x: 0.6548207, y: -0.26688936, z: -0.65480536, w: -0.26685178}
+  m_LocalRotation: {x: 0.65482074, y: -0.2668894, z: -0.6548054, w: -0.2668518}
   m_LocalPosition: {x: -0.136, y: -0.145, z: -0}
   m_LocalScale: {x: 26.07242, y: 21.2, z: 26.07242}
   m_LocalEulerAnglesHint: {x: -44.347, y: -90.0032, z: -179.99539}
@@ -1076,17 +1074,6 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11402100
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aaa9eb193900442995b0d4f66292772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11415106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1113,6 +1100,7 @@ MonoBehaviour:
   turnValve: {fileID: 8300000, guid: abd33226ef615f146947dd21f5dbce2e, type: 3}
   wrongDoor: {fileID: 8300000, guid: 51405bd6bb3ca7344b00240f06bbfef1, type: 3}
   order: 5
+  audioCoolDown: 3
 --- !u!114 &11418138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1128,17 +1116,6 @@ MonoBehaviour:
   animTop: {fileID: 9557534}
   waitTime: 1
   matchKey: 4
---- !u!114 &11491844
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f46558f08830c410aa19571bebffd3ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

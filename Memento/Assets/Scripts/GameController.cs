@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour {
 	DoorLogic[] doorLogics = new DoorLogic[5];
 	int numOfKeys;
 	int insertedKeysCount = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -45,12 +47,17 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update() {
+		// Check for phase 2 (i.e. door opening puzzle)
 		if (!isPhase2) {
 			if (insertedKeysCount >= numOfKeys) {
 				isPhase2 = true;
 			}
 		}
 
+		// Player manual exit
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			SceneManager.LoadScene ("TitleMenu");
+		}
 
 	}
 
@@ -111,12 +118,15 @@ public class GameController : MonoBehaviour {
 
 		completedGame = CheckAllDoorsOpen (); // Check if all doors have been opened
 
+		if (completedGame) {
+			StartCoroutine (EndGame ());
+		}
+
 		return correctDoorOrdering;
 	}
 
 	public void CloseAllDoors() {
 		for (int i = 0; i < Doors.Length; i++) {
-//			DoorLogic currentDoor = Doors [i].GetComponent<DoorLogic> ();
 			if (doorLogics [i].IsOpen) {
 				doorLogics [i].CloseSelectedDoor ();
 			}
@@ -131,10 +141,17 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
-		if (count >= doorLogics.Length) {
+		if (count >= doorLogics.Length - 1) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	IEnumerator EndGame() {
+		yield return new WaitForSeconds (20.0f);
+		ScreenFader.current.EndScene ();
+
+		StopCoroutine (EndGame ());
 	}
 }
