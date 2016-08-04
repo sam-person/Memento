@@ -1141,9 +1141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeOutSpeed: 0.5
   fadeInSpeed: 1.5
-  scene: 4d61696e205363656e65
-  myImage: {fileID: 0}
-  sceneStarting: 0
+  scene: Main Scene
 --- !u!114 &2002317582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1311,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyText: {fileID: 1764778177}
   creditsText: {fileID: 730393236}
-  buttonState: 0
-  count: 0
-  requiredClicks: 20
